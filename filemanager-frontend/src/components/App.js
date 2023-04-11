@@ -9,7 +9,6 @@ const App = () => {
   const [cred, setCred] = useState("");
 
   useEffect(()=>{
-    console.log("monkey")
     let jwt = getCookie("jwt")
     if(jwt){
       setCred(jwt)
