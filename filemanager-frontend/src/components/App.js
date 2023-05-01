@@ -9,7 +9,6 @@ const App = () => {
   const [cred, setCred] = useState("");
 
   useEffect(()=>{
-    console.log("monkey")
     let jwt = getCookie("jwt")
     if(jwt){
       setCred(jwt)
@@ -41,12 +40,15 @@ const App = () => {
         }
       );
       if (response.status === 200) {
-        console.log(response.data);
+        // console.log(response.data);
         setUser(response.data);
       } else {
         throw new Error("authentication has been failed!");
+        
       }
+
     } catch (err) {
+      setCred("")
       console.log(err);
     }
   };

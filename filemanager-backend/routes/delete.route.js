@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { downloadFile } = require("../controllers/fileController");
+const { deleteFile } = require("../controllers/fileController");
+
 const { checkGoogleAuth } = require("../controllers/checkGoogleAuth");
 
-router.get("/:key", checkGoogleAuth, downloadFile);
+router.delete("/:key", checkGoogleAuth, deleteFile);
 
 module.exports = router;

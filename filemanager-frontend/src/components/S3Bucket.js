@@ -33,7 +33,7 @@ const S3Bucket = ({jwt}) => {
     
   return (<>
   <UploadFiles jwt={jwt} requestData={requestData} />
-  <ListFiles files={files}/>
+  <ListFiles jwt={jwt} files={files} requestData={requestData}/>
   </>
   )
 }

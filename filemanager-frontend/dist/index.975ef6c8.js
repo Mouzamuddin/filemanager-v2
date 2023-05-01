@@ -143,8 +143,8 @@
     }
   }
 })({"1xC6H":[function(require,module,exports) {
-var Refresh = require("9855f51b89c3c1fd");
-var ErrorOverlay = require("7b2e5251280d1752");
+var Refresh = require("c59ad0e2ee2341f6");
+var ErrorOverlay = require("971c0e24392d4ff2");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,7 +163,7 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"9855f51b89c3c1fd":"786KC","7b2e5251280d1752":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"c59ad0e2ee2341f6":"786KC","971c0e24392d4ff2":"1dldy"}],"786KC":[function(require,module,exports) {
 "use strict";
 module.exports = require("8a9132c565be45a4");
 
@@ -3789,9 +3789,9 @@ module.exports = require("9c6b32fc9fe86677");
 
 },{"e62803eadb06ae9f":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
-module.exports = require("803eadcd06969a9a");
+module.exports = require("e38627158633ef92");
 
-},{"803eadcd06969a9a":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"e38627158633ef92":"6YvXz"}],"6YvXz":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -5659,7 +5659,7 @@ module.exports = require("803eadcd06969a9a");
 
 },{}],"lOjBx":[function(require,module,exports) {
 "use strict";
-var m = require("b59b35c2b1ac5d8a");
+var m = require("e99502bcc2c45699");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5678,7 +5678,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"b59b35c2b1ac5d8a":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{"e99502bcc2c45699":"j6uA9"}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -27161,7 +27161,6 @@ const App = ()=>{
     const [user, setUser] = (0, _react.useState)({});
     const [cred, setCred] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
-        console.log("monkey");
         let jwt = getCookie("jwt");
         if (jwt) {
             setCred(jwt);
@@ -27188,11 +27187,11 @@ const App = ()=>{
                     authorization: jwt
                 }
             });
-            if (response.status === 200) {
-                console.log(response.data);
-                setUser(response.data);
-            } else throw new Error("authentication has been failed!");
+            if (response.status === 200) // console.log(response.data);
+            setUser(response.data);
+            else throw new Error("authentication has been failed!");
         } catch (err) {
+            setCred("");
             console.log(err);
         }
     };
@@ -27216,7 +27215,7 @@ const App = ()=>{
                 logout: handleLogout
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 71,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             !cred ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27228,18 +27227,18 @@ const App = ()=>{
                     }
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 75,
+                    lineNumber: 77,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 74,
+                lineNumber: 76,
                 columnNumber: 9
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _s3BucketDefault.default), {
                 jwt: cred
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 85,
+                lineNumber: 87,
                 columnNumber: 9
             }, undefined)
         ]
@@ -31488,7 +31487,7 @@ $RefreshReg$(_c, "Header");
 }
 },{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"km3Ru":[function(require,module,exports) {
 "use strict";
-var Refresh = require("cfc3f221a82caf4f");
+var Refresh = require("9e999dca374ea93f");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -31619,7 +31618,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"cfc3f221a82caf4f":"786KC"}],"2ATJC":[function(require,module,exports) {
+},{"9e999dca374ea93f":"786KC"}],"2ATJC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GoogleLogin", ()=>GoogleLogin);
@@ -31924,7 +31923,9 @@ const S3Bucket = ({ jwt  })=>{
                 columnNumber: 3
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listFilesDefault.default), {
-                files: files
+                jwt: jwt,
+                files: files,
+                requestData: requestData
             }, void 0, false, {
                 fileName: "src/components/S3Bucket.js",
                 lineNumber: 36,
@@ -32066,9 +32067,52 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const ListFiles = ({ files  })=>{
-    const handleDownload = async (filePath)=>{
-        window.open(filePath, "_self");
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+const ListFiles = ({ requestData , files , jwt  })=>{
+    // const handleDownload = async(filePath) => {
+    //     window.open(filePath, "_self");
+    // };
+    const handleDownload = async (event, fileName)=>{
+        try {
+            const response = await (0, _axiosDefault.default).get(`http://localhost:5001/download/${fileName}`, {
+                withCredentials: true,
+                responseType: "blob",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    authorization: jwt
+                }
+            });
+            const url = window.URL.createObjectURL(new Blob([
+                response.data
+            ]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", fileName);
+            document.body.appendChild(link);
+            link.click();
+            if (response.status === 200) ;
+            else throw new Error("authentication has been failed!");
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const handleDelete = async (event, fileName)=>{
+        try {
+            const response = await (0, _axiosDefault.default).delete(`http://localhost:5001/delete/${fileName}`, {
+                withCredentials: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    authorization: jwt
+                }
+            });
+            // console.log(response)
+            if (response.status === 200) //  console.log(response)
+            requestData();
+            else throw new Error("authentication has been failed!");
+        } catch (err) {
+            console.log(err);
+        }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -32076,7 +32120,7 @@ const ListFiles = ({ files  })=>{
                 children: "Files"
             }, void 0, false, {
                 fileName: "src/components/ListFiles.js",
-                lineNumber: 10,
+                lineNumber: 62,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -32087,27 +32131,35 @@ const ListFiles = ({ files  })=>{
                                 children: file.filename
                             }, void 0, false, {
                                 fileName: "src/components/ListFiles.js",
-                                lineNumber: 15,
+                                lineNumber: 67,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: ()=>handleDownload(file.path),
+                                onClick: (event)=>handleDownload(event, file.filename),
                                 children: "Download"
                             }, void 0, false, {
                                 fileName: "src/components/ListFiles.js",
-                                lineNumber: 16,
+                                lineNumber: 68,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: (event)=>handleDelete(event, file.filename),
+                                children: "Delete"
+                            }, void 0, false, {
+                                fileName: "src/components/ListFiles.js",
+                                lineNumber: 71,
                                 columnNumber: 15
                             }, undefined)
                         ]
                     }, index, true, {
                         fileName: "src/components/ListFiles.js",
-                        lineNumber: 14,
+                        lineNumber: 66,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/ListFiles.js",
-                lineNumber: 11,
+                lineNumber: 63,
                 columnNumber: 7
             }, undefined)
         ]
@@ -32123,6 +32175,6 @@ $RefreshReg$(_c, "ListFiles");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","jC2qd","8lqZg"], "8lqZg", "parcelRequire23cd")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","axios":"jo6P5"}]},["1xC6H","jC2qd","8lqZg"], "8lqZg", "parcelRequire23cd")
 
 //# sourceMappingURL=index.975ef6c8.js.map
