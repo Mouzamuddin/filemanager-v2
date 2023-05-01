@@ -38,8 +38,8 @@ exports.uploadFile = async (req, res) => {
     Body: fileStream,
   };
   s3.upload(params, function (err, data) {
-    // console.log("s3Upload data");
-    // console.log(data);
+    console.log("s3Upload data");
+    console.log(data);
     if (err) {
       throw err;
     }
