@@ -52,7 +52,12 @@ exports.uploadFile = async (req, res) => {
       .save()
       .then((newFile) => {
         // console.log("uploaded new file: ", newFile);
-        res.status(200).json({ success:true,message:'Successfully Uploaded'})
+        res
+          .status(200)
+          .json({ success: true, message: "Successfully Uploaded" });
+        fs.unlinkSync(file.path);
+
+        console.log("Delete File successfully.");
         //done(null, newFile);
       });
     // console.log(`File uploaded successfully. ${data.Location}`);
@@ -91,7 +96,7 @@ exports.deleteFile = async (req, res) => {
   const fileName = `${req.user.googleId}/${key}`;
   const params = {
     Bucket: awsBucketName,
-    
+
     Key: fileName,
   };
 
@@ -103,13 +108,14 @@ exports.deleteFile = async (req, res) => {
     File.findOneAndDelete({ filename: name, Id: req.user.googleId })
       .then((deletedFile) => {
         // console.log("deleted file: ", deletedFile);
-       
-        res.status(200).json({ success:true,message:'Successfully Deleted'})
 
+        res
+          .status(200)
+          .json({ success: true, message: "Successfully Deleted" });
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).json({ success:false,message:err})
+        res.status(500).json({ success: false, message: err });
       });
   } catch (error) {
     console.error(error);
